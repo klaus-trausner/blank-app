@@ -2,14 +2,19 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+
 st.title("🎈 My new streeamlit")
 st.write(
     "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 )
 
+st.markdown("# Main Page")
+st.sidebar.markdown("# Main Page")
+
 conn = st.connection("my_database")
-df = conn.query("select * charts")
+df = conn.query("SELECT * FROM charts")
 st.dataframe(df)
+st.line_chart(df,x="nr", y ={"temperatur", "luftdruck"})
 
 # Add a selectbox to the sidebar:
 add_selectbox = st.sidebar.selectbox(
